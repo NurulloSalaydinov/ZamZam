@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zam Zam Water</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar container">
+            <a href="#" class="navbar-brand">
+                ZamZam<br>Water
+            </a>
+            <div class="navbar-menu">
+                <a href="#" class="navbar-link">
+                    Yetkazib Berish
+                </a>
+                <a href="#" class="navbar-link">
+                    Katalog
+                </a>
+                <div class="navbar-button">
+                    <a href="#" class="base-btn">Buyurtma</a>
+                </div>
+                <div class="navbar-brand">
+                    <a href="tel:+998934403333">+998934403333</a>
+                </div>
+            </div>
+            <div class="navbar-burger" onclick="navbarBurger(this)">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <div class="header-banner">
+            <div class="container">
+                <div class="banner-title">
+                    ZamZam suvi<br>qo’shilgan<br>ichimlik suvi
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="text-center">Nima uchun ZamZam ?</h1>
+        <div class="container">
+            <!-- answer wrapper -->
+            <div class="answer-wrapper">
+                <div class="first-side">
+                    <img src="img/icon/first.png" alt="Topilmadi">
+                    <p><b>Suvdagi kislorod miqdori yuqori</b> o’zingizni yaxshi his qilishni boshlaysiz va ish faoliyatini yaxshilaydi.</p>
+                </div>
+                <div class="second-side">
+                    <img src="img/icon/third.png" alt="Topilmadi">
+                    <p><b>Shahar bo’ylab yetkazib berish bepul</b>: Shaharni istalgan qismiga bepul yetkazib berish. </p>
+                </div>
+                <div class="third-side">
+                    <img src="img/icon/second.png" alt="Topilmadi">
+                    <p><b>Ajoyib tetiklantiruvchi ta’m</b>: tabiiyligi tufayli tetiklantiruvchi hususiyatga ega.</p>
+                </div>
+                <div class="fourth-side">
+                    <img src="img/icon/fourth.png" alt="Topilmadi">
+                    <p><b>Ideal yumshoqliqga ega</b>: Suvdagi tuzlar, kaltsiy va magniylarni kamligi hisobiga.</p>
+                </div>
+            </div>
+            <!-- end wrapper -->
+            <h1 class="order-title">Hozirni o’zida buyurtma bering</h1>
+            <div class="order-wrapper">
+                <div class="text-content">
+                    <p>ZamZam Water MCHJ ning tajribali xodimlari sizning buyurtmangizni yetkazib berishdan mamnun.</p>
+                    <p>Shahar ichida yetkazib berish bepul. Shahar tashqarisi uchun esa operatordan yetkazib berish narxini aniqlab olishni unutmang !</p>
+                    <br>
+                    <a href="#" class="base-btn is-small">Buyurtma</a>
+                </div>
+                <div class="image-content">
+                    <img src="img/order-image.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="right-watermark">
+            <img src="img/watermark-right.png" alt="">
+        </div>
+        <div class="left-watermark">
+            <img src="img/watermark-left.png" alt="">
+        </div>
+        <div class="container">
+            <div class="calculation-wrapper">
+                <div class="bottle-side">
+                    <img src="img/bottle-calc.png" alt="Bottle" id="bottle">
+                    <div class="calcuation-result" id="overallResult">3.1 L</div>
+                </div>
+                <div class="range-side">
+                    <h1 class="calculation-title">Bir kunda qancha suv ichish kerak ?</h1>
+                    <label for="weight">
+                        Vazningiz (<span id="weight-display">70</span>kg)
+                        <br>
+                        <input type="range" min="10" max="150" value="70" id="weight">
+                    </label>
+                    <br>
+                    <label for="activenesss">
+                        Kunlik aktivlik: (<span id="active-display">1</span> soat)
+                        <br>
+                        <input type="range" min="0" max="16" value="1" id="activeness">
+                    </label>
+                    <h3 class="subtitle">Vazningiz va kunlik aktivlik darajangizni belgilash orqali bir sutkada necha litr suv ichishingiz kerak ekanligini bilib oling.</h3>
+                    <p>Ushbu hisoblash tavsiya o’rnida qabul qilinishi kerak! Yanada aniqroq ma’lumotga ega bo’lish uchun dietolog ko’rigidan o’tishingizni maslahat beramiz.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+
+    <script src="js/app.js"></script>
+</body>
+</html>
