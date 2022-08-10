@@ -10,7 +10,7 @@
 <body>
 
     <header>
-        <nav class="navbar container">
+        <nav class="navbar">
             <a href="#" class="navbar-brand">
                 ZamZam<br>Water
             </a>
@@ -18,11 +18,11 @@
                 <a href="#" class="navbar-link">
                     Yetkazib Berish
                 </a>
-                <a href="#" class="navbar-link">
+                <a href="#catalog" class="navbar-link">
                     Katalog
                 </a>
                 <div class="navbar-button">
-                    <a href="#" class="base-btn">Buyurtma</a>
+                    <button class="base-btn">Buyurtma</button>
                 </div>
                 <div class="navbar-brand">
                     <a href="tel:+998934403333">+998934403333</a>
@@ -44,7 +44,7 @@
     </header>
 
     <main>
-        <h1 class="text-center">Nima uchun ZamZam ?</h1>
+        <h1 class="text-center is-smaller-size-mobile">Nima uchun ZamZam ?</h1>
         <div class="container">
             <!-- answer wrapper -->
             <div class="answer-wrapper">
@@ -72,7 +72,7 @@
                     <p>ZamZam Water MCHJ ning tajribali xodimlari sizning buyurtmangizni yetkazib berishdan mamnun.</p>
                     <p>Shahar ichida yetkazib berish bepul. Shahar tashqarisi uchun esa operatordan yetkazib berish narxini aniqlab olishni unutmang !</p>
                     <br>
-                    <a href="#" class="base-btn is-small">Buyurtma</a>
+                    <a href="#catalog" class="base-btn is-small">Buyurtma</a>
                 </div>
                 <div class="image-content">
                     <img src="img/order-image.png" alt="">
@@ -119,11 +119,33 @@
             <img src="img/watermark-left.png" alt="">
         </div>
         <div class="container">
-            <h1 class="text-center">Katalog</h1>
+            <h1 class="text-center" id="catalog">Katalog</h1>
             <h1 class="centered-mobile-visible-text">«ZamZam Water» qadoqlangan<br> ichimlik suvi</h1>
             <div class="catalog-wrapper">
-                <div class="catalog-slider">
-                    <img src="img/big-bottles.png" alt="">
+                <div class="catalog-slider" id="catalogSlider">
+                    <!-- simple-wrapper for simple slider -->
+                    <div class="slider-wrapper simple-wrapper">
+                        <img src="img/big-bottles.png" alt="">
+                        <img src="img/big-bottles.png" alt="">
+                        <img src="img/big-bottles.png" alt="">
+                    </div>
+                    <div class="inline-slider-conf">
+                        <div class="slider-controller">
+                            <div class="prev-btn">
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="next-btn">
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="preview">
+                            <img src="img/big-bottles.png" class="active" alt="">
+                            <img src="img/slider-part.png" alt="">
+                            <img src="img/big-bottles.png" alt="">
+                        </div>
+                    </div>
                 </div>
                 <div class="text-content">
                     <h1>«ZamZam Water» qadoqlangan ichimlik suvi</h1>
@@ -148,17 +170,136 @@
                     </div>
                     <div class="water-choose">
                         <label for="l1">
-                            <div class="inlined">
+                            <input type="radio" name="litr" id="l1" cost="9800" checked>
+                            <div class="inlined" litr-size="L5">
                                 <img src="img/icon/simple-input.png" alt="">
                                 <p>9.800</p>
                             </div>
-                            <input type="checkbox" id="l1">
+                        </label>
+                        <label for="l2">
+                            <input type="radio" name="litr" id="l2" cost="10000">
+                            <div class="inlined" litr-size="L10">
+                                <img src="img/icon/simple-input.png" alt="">
+                                <p>10.000</p>
+                            </div>
+                        </label>
+                        <label for="l3">
+                            <input type="radio" name="litr" id="l3" cost="11800">
+                            <div class="inlined" litr-size="L10 &RightArrow; 12">
+                                <img src="img/icon/simple-input.png" alt="">
+                                <p>11.800</p>
+                            </div>
+                        </label>
+                        <label for="l4">
+                            <input type="radio" name="litr" id="l4" cost="15800">
+                            <div class="inlined" litr-size="L15 &RightArrow; 16">
+                                <img src="img/icon/simple-input.png" alt="">
+                                <p>15.800</p>
+                            </div>
                         </label>
                     </div>
+                    <div class="count-calc">
+                        <div class="display">
+                            <div class="minus disabled" id="minus-water">-</div>
+                            <div class="displayer-input">1</div>
+                            <div class="plus" id="plus-water">+</div>
+                        </div>
+                        <div class="cost">
+                            <h2 class="water-cost">9.800</h2>
+                        </div>
+                        <div class="order-btn">
+                            <button>Buyurtma</button>
+                        </div>
+                        <div class="suffix">
+                            <img src="img/icon/clock.png" alt="">
+                            <span>Sotib<br>Olish</span>
+                        </div>
+                    </div>
+                    <p>Minimal buyurtma 2-5 ta qadoq hisoblanadi. 10 tadan ko’p qadoqga buyurtma berilganda narxlar kelishilgan holda belgilanadi. Yetkazib berish narxi shahar tashqarisiga kelishuv asosida. Shahar ichida yetkazib berish bepul.</p>
                 </div>
             </div>
         </div>
+        <div class="container" id="aboutus">
+            <h1 class="centered-mobile-visible-text couple-title">ZamZam Water MCHJ haqida</h1>
+            <div class="couple-wrapper">
+                <div class="text-content">
+                    <h1 class="couple-title">ZamZam Water MCHJ haqida</h1>
+                    <p>ZamZam Water MCHJ 2018-yildan beri vodiy aholisi uchun shifobaxsh zamzam suvi qo’shilgan tabiiy ichimlik suvi yetkazib berish bilan shug’illanadi.</p>
+                    <p>Savollaringiz va takliflaringizni bizga yozib qoldiring biz uchun mijozlarimizning fikrlari muhim.</p>
+                    <br>
+                    <br>
+                    <a href="#contact" class="base-btn">Bog'lanish</a>
+                </div>
+                <div class="img-content">
+                    <img src="img/big-bottles.png" alt="">
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div id="contact" class="contact couple-wrapper align-center">
+                <div class="form-image">
+                    <img src="img/map-background.png" alt="">
+                </div>
+                <div class="form-content">
+                    <form class="form-group">
+                        <h1 class="text-center">Savol va takliflar</h1>
+                        <br>
+                        <br>
+                        <div class="form-input">
+                            <input type="text" placeholder="Ism Familiya" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="text" placeholder="Tashkilot" required>
+                        </div>
+                        <div class="form-input">
+                            <input type="phone" pattern="[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}" placeholder="Telefon" required>
+                        </div>
+                        <div class="form-textarea">
+                            <textarea placeholder="Xabar matni"></textarea>
+                        </div>
+                        <div class="form-button">
+                            <button class="base-btn">Yuborish</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
     </main>
+
+    <footer>
+        <div class="container footer-wrapper">
+            <div>
+                <h1 class="footer-title">ZamZam<br>Water</h1>
+                <br>
+                <p class="footer-subtitle">Vodiy uchun zamzam suvi qo’shilgan tabiiy ichimlik suvini yetkazib beramiz.</p>
+            </div>
+            <div>
+                <a scrollTo="catalog" class="footer-link">Katalog</a>
+                <a href="#" class="footer-link">Yetkazib berish</a>
+            </div>
+            <div>
+                <a scrollTo="aboutus" class="footer-link">Biz haqimizda</a>
+                <a href="#" class="footer-link">Buyurtma</a>
+                <a scrollTo="contact" class="footer-link">Bog'lanish</a>
+            </div>
+            <div>
+                <p class="footer-subtitle">Bog'lanish uchun</p>
+                <a href="tel:+998934403333" class="footer-link">+99 (893) 440 33 33</a>
+                <a href="tel:+998934403333" class="footer-link">+99 (893) 440 33 33</a>
+                <br>
+                <p class="footer-subtitle">Elektron pochta</p>
+                <a href="mailto:zamzamwater@gmail.com" class="footer-link">zamzamwater@gmail.com</a>
+            </div>
+        </div>
+    </footer>
     
 
     <script src="js/app.js"></script>

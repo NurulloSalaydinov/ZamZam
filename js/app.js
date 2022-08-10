@@ -4,6 +4,53 @@ const navbarBurger = (e) => {
     e.classList.toggle('active');
 };
 
+const Buy = () => {
+    var productParent = document.querySelector('.water-choose');
+    var productChecked = productParent.querySelectorAll('input[type="radio"]');
+    var addMinus = document.querySelector('#minus-water');
+    var addPlus = document.querySelector('#plus-water');
+    var displayer = document.querySelector('.displayer-input');
+    var costDisplay = document.querySelector('.water-cost');
+    var waterCost;
+    productChecked.forEach(elem => {
+        elem.addEventListener('change', () => {
+            var displayerValue = parseInt(displayer.innerText);
+            if (elem.checked) {
+                waterCost = parseInt(elem.attributes['cost'].nodeValue);
+                costDisplay.innerText = waterCost * displayerValue;
+            };
+        });
+        if (elem.checked) {
+            waterCost = parseInt(elem.attributes['cost'].nodeValue);
+            costDisplay.innerText = waterCost;
+        };
+    });
+    addMinus.onclick = () => {
+        var displayerValue = parseInt(displayer.innerText);
+        if (displayerValue != 1) {
+            addMinus.classList.remove('disabled');
+            minusedVal = displayerValue - 1
+            displayer.innerText = minusedVal;
+            costDisplay.innerText = waterCost * minusedVal;
+        } else {
+            addMinus.classList.add('disabled');
+        }
+    };
+    addPlus.onclick = () => {
+        var displayerValue = parseInt(displayer.innerText);
+        var plusedVal = displayerValue + 1;
+        displayer.innerText = plusedVal;
+        costDisplay.innerText = waterCost * plusedVal;
+        if (plusedVal != 1) {
+            addMinus.classList.remove('disabled');
+        } else {
+            addMinus.classList.add('disabled');
+        }
+    }
+};
+
+Buy();
+
 const Calculation = () => {
     var weight = document.getElementById('weight');
     var activeness = document.getElementById('activeness');
@@ -57,3 +104,74 @@ const Calculation = () => {
 };
 
 Calculation();
+
+const Slider = (mainId) => {
+    function render() {
+        var baseSlider = document.getElementById(mainId);
+        var sliderWrapper = baseSlider.querySelector('.simple-wrapper');
+        var childCount = sliderWrapper.childElementCount;
+        var sliderChildren = sliderWrapper.children;
+        var mainIndex = 0;
+        var nextBtn = baseSlider.querySelector('.next-btn');
+        var prevBtn = baseSlider.querySelector('.prev-btn');
+        var preview = baseSlider.querySelector('.preview');
+        if (preview) {
+            var previewItem = preview.childNodes;
+            var sortedPreviewItemList = [];
+            previewItem.forEach((el) => {
+                if (el.nodeName != '#text') {  // sorting if it doesn't contain extra spaces
+                    sortedPreviewItemList.push(el);
+                };
+            });
+            sortedPreviewItemList.forEach((e, index) => {
+                e.onclick = () => {
+                    sortedPreviewItemList.forEach((eloop) => {
+                        eloop.classList.remove('active');
+                    });
+                    if (index < childCount) {
+                        e.classList.add('active');
+                        var ChildClientWidth = sliderChildren[mainIndex].clientWidth;
+                        sliderWrapper.style.transform = `translateX(-${ChildClientWidth * index}px)`;
+                    };
+                };
+            });
+        };
+        nextBtn.onclick = () => {
+            if (mainIndex != childCount - 1) {
+                mainIndex += 1;
+            } else {
+                mainIndex = 0;
+            };
+            sortedPreviewItemList.forEach((all) => {
+                all.classList.remove('active');
+            });
+            sortedPreviewItemList.forEach((exact, exactIndex) => {
+                if (exactIndex == mainIndex) {
+                    exact.classList.add('active');
+                };
+            });
+            var ChildClientWidth = sliderChildren[mainIndex].clientWidth;
+            sliderWrapper.style.transform = `translateX(-${ChildClientWidth * mainIndex}px)`;
+        };
+        prevBtn.onclick = () => {
+            if (mainIndex != 0) {
+                mainIndex -= 1;
+            } else {
+                mainIndex = childCount - 1;
+            };
+            sortedPreviewItemList.forEach((all) => {
+                all.classList.remove('active');
+            });
+            sortedPreviewItemList.forEach((exact, exactIndex) => {
+                if (exactIndex == mainIndex) {
+                    exact.classList.add('active');
+                };
+            });
+            var ChildClientWidth = sliderChildren[mainIndex].clientWidth;
+            sliderWrapper.style.transform = `translateX(-${ChildClientWidth * mainIndex}px)`;
+        };
+    };
+    render();
+};
+
+Slider('catalogSlider');
