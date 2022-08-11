@@ -799,6 +799,7 @@ footer .footer-wrapper div .footer-subtitle {
     top: 0;
     left: 0;
     width: 100%;
+    display: none;
     height: 100vh;
     display: flex;
     overflow: auto;
