@@ -15,11 +15,14 @@
                 ZamZam<br>Water
             </a>
             <div class="navbar-menu">
-                <a href="#" class="navbar-link">
+                <a href="#orderText" class="navbar-link">
                     Yetkazib Berish
                 </a>
                 <a href="#catalog" class="navbar-link">
                     Katalog
+                </a>
+                <a href="#contact" class="navbar-link">
+                    Bog'lanish
                 </a>
                 <div class="navbar-button">
                     <button class="base-btn">Buyurtma</button>
@@ -43,8 +46,10 @@
         </div>
     </header>
 
-    <main>
-        <h1 class="text-center is-smaller-size-mobile">Nima uchun ZamZam ?</h1>
+    <main id="orderText">
+        <div class="container">
+            <h1 class="text-center is-smaller-size-mobile">Nima uchun ZamZam ?</h1>
+        </div>
         <div class="container">
             <!-- answer wrapper -->
             <div class="answer-wrapper">
@@ -66,7 +71,7 @@
                 </div>
             </div>
             <!-- end wrapper -->
-            <h1 class="order-title">Hozirni o’zida buyurtma bering</h1>
+            <h1 class="order-title" >Hozirni o’zida buyurtma bering</h1>
             <div class="order-wrapper">
                 <div class="text-content">
                     <p>ZamZam Water MCHJ ning tajribali xodimlari sizning buyurtmangizni yetkazib berishdan mamnun.</p>
@@ -282,13 +287,13 @@
                 <p class="footer-subtitle">Vodiy uchun zamzam suvi qo’shilgan tabiiy ichimlik suvini yetkazib beramiz.</p>
             </div>
             <div>
-                <a scrollTo="catalog" class="footer-link">Katalog</a>
-                <a href="#" class="footer-link">Yetkazib berish</a>
+                <a href="#catalog" class="footer-link">Katalog</a>
+                <a href="#orderText" class="footer-link">Yetkazib berish</a>
             </div>
             <div>
-                <a scrollTo="aboutus" class="footer-link">Biz haqimizda</a>
-                <a href="#" class="footer-link">Buyurtma</a>
-                <a scrollTo="contact" class="footer-link">Bog'lanish</a>
+                <a href="#aboutus" class="footer-link">Biz haqimizda</a>
+                <a href="#catalog" class="footer-link">Buyurtma</a>
+                <a href="#contact" class="footer-link">Bog'lanish</a>
             </div>
             <div>
                 <p class="footer-subtitle">Bog'lanish uchun</p>
@@ -300,6 +305,67 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="title">
+                    Buyurtma berish formasi : (<span class="modal-count">10 L x 10 qadoq</span> = <span class="modal-cost">105.000</span> uzs)
+                </h2>
+                <div class="modal-close">
+                    <img src="img/icon/modal-close.svg" alt="close">
+                </div>
+            </div>
+            <form class="modal-form">
+                <div class="couple-input">
+                    <label for="fullname">
+                        <span>Ism Familya</span>
+                        <input type="text" maxlength="100" class="modal-input" id="fullname" required>
+                    </label>
+                    <label for="company">
+                        <span>Tashkilot nomi</span>
+                        <input type="text" maxlength="100" class="modal-input" id="company" required>
+                    </label>
+                </div>
+                <div class="single-input">
+                    <label for="address">
+                        <span>Manzil</span>
+                        <input type="text" maxlength="200" class="modal-input" placeholder="Buyuk Turon 21" id="address">
+                    </label>
+                    <label for="address2">
+                        <span>Manzil 2</span>
+                        <input type="text" maxlength="200" class="modal-input" id="address">
+                    </label>
+                </div>
+                <div class="triple-input">
+                    <label for="city">
+                        <span>Shahar</span>
+                        <input type="text" required maxlength="200" class="modal-input" id="city">
+                    </label>
+                    <label for="province">
+                        <span>Viloyat</span>
+                        <select id="province" class="modal-select" required>
+                            <option value="Andijon">Andijon</option>
+                            <option value="Namangan">Namangan</option>
+                            <option value="Fargona">Farg'ona</option>
+                            <option value="Toshkent">Toshkent</option>
+                            <option value="Jizzax">Jizzax</option>
+                            <option value="Samarqand">Samarqand</option>
+                            <option value="Buxoro">Buxoro</option>
+                        </select>
+                    </label>
+                    <label for="zipcode">
+                        <span>Pochta indeksi</span>
+                        <input type="text" class="modal-input" required id="zipcode" pattern="[0-9]{5}">
+                    </label>
+                </div>
+                <div class="form-btn">
+                    <br>
+                    <button id="form-btn">Buyurtmani tasdiqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
     
 
     <script src="js/app.js"></script>

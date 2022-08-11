@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --base-dark-blue: #262163;
     --base-light-blue: #8FDAF9;
@@ -40,13 +44,23 @@ nav {
     height: auto;
     z-index: 111;
     display: flex;
-    position: fixed;
+    transition: all 0.4s;
+    position: absolute;
     background: #fff;
     padding: 10px 30px;
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.5);
     /* border-bottom: 1px solid var(--base-dark-blue); */
+}
+
+nav.fixed-unvisible {
+    position: fixed;
+    transform: translateY(-100%);
+}
+
+nav.fixed-visible {
+    transform: translateY(0);
 }
 
 nav .navbar-brand {
@@ -61,22 +75,22 @@ nav .navbar-menu {
 }
 
 nav .navbar-menu .navbar-link {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 500
 }
 
 nav .navbar-burger {
     cursor: pointer;
     display: none;
-    width: auto;
-    height: auto;
+    width: 60px;
+    height: 40px;
 }
 
 nav .navbar-burger span {
     display: block;
     width: 40px;
     height: 5px;
-    margin: 6px 0;
+    margin: 2px 0;
     border-radius: 5px;
     background: var(--base-dark-blue);
 }
@@ -526,7 +540,7 @@ main {
     gap: 15px;
     display: flex;
     align-items: center;
-    /* width: calc(100% / 2 - 10px); */
+    width: calc(100% / 4 - 10px);
 }
 
 .inlined-content img {
@@ -781,7 +795,109 @@ footer .footer-wrapper div .footer-subtitle {
     margin: 0 0 5px 0;
 }
 
-@media (max-width: 1250px) {
+.modal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    overflow: auto;
+    position: fixed;
+    z-index: 111111111;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.5);
+}
+
+.modal .modal-content {
+    width: 1000px;
+    position: relative;
+    padding: 100px 70px;
+    border-radius: 10px;
+    background: #F4F1FB;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.modal .modal-content h2 {
+    color: #212529;
+}
+
+.modal .modal-content span {
+    color: #212529;
+}
+
+.modal-cost {
+    color: #DA4A4A !important;
+}
+
+.modal-close {
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    position: absolute;
+}
+
+.couple-input {
+    gap: 10px;
+    display: flex;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.couple-input label {
+    width: calc(50% - 10px);
+}
+
+.couple-input label span {
+    display: block;
+    font-size: 17px;
+}
+
+.triple-input {
+    display: flex;
+    margin: 10px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.triple-input span {
+    display: block;
+}
+
+.modal-input {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    font-size: 16px;
+    text-indent: 20px;
+    border-radius: 4px;
+    color: var(--base-dark-blue);
+    border: 1px solid #CED4DA;
+}
+
+#form-btn {
+    color: #fff;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 8px 30px;
+    background: #0D6EFD;
+    border: 1px solid #0D6EFD;
+}
+
+.modal-select {
+    width: 100%;
+    height: 40px;
+    outline: none;
+    cursor: pointer;
+    padding: 6px 25px;
+    border-radius: 4px;
+    border: 1px solid #CED4DA;
+}
+
+@media (max-width: 1370px) {
     nav .navbar-brand {
         font-size: 24px;
     }
@@ -819,7 +935,7 @@ footer .footer-wrapper div .footer-subtitle {
         box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.3);
     }
     nav .navbar-menu.active {
-        height: 244px;
+        height: 310px;
     }
     nav .navbar-menu .navbar-link {
         display: block;
@@ -846,7 +962,10 @@ footer .footer-wrapper div .footer-subtitle {
         display: block;
     }
     nav .navbar-burger {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
     }
     .header-banner {
         height: calc(100vh - 90px);
@@ -936,7 +1055,7 @@ footer .footer-wrapper div .footer-subtitle {
     }
     .centered-mobile-visible-text {
         display: block;
-        font-size: 35px;
+        font-size: 30px;
         margin-top: 30px;
     }
     .couple-wrapper {
@@ -955,12 +1074,28 @@ footer .footer-wrapper div .footer-subtitle {
         width: 100%;
         margin-bottom: 30px;
     }
+    
 }
 
 @media (max-width: 768px) {
     .header-banner .banner-title {
         margin-top: -3px;
         font-size: 50px;
+    }
+    .modal .modal-content {
+        padding: 20px 20px;
+    }
+    .modal-close {
+        top: 30px;
+    }
+    .modal .modal-content {
+        width: 100%;
+    }
+    .couple-input label {
+        width: 100% !important;
+    }
+    .triple-input label {
+        width: 100% !important;
     }
 }
 
@@ -979,8 +1114,6 @@ footer .footer-wrapper div .footer-subtitle {
         font-size: 30px;
     }
 }
-
-
 
 
 
@@ -1138,6 +1271,27 @@ input[type="range"]::-webkit-slider-thumb {
     }
 }
 
-#aboutus {
-    margin-top: 50px !important;
+
+@media (max-width: 320px) {
+    .answer-wrapper div {
+        flex-direction: column;
+    }
+    .inlined-content {
+        flex-direction: column;
+    }
+    .inlined-content img {
+        width: auto;
+    }
+    .water-choose {
+        flex-direction: column
+    }
+    .water-choose label {
+        width: 100% !important;
+    }
+    .couple-title {
+        font-size: 25px !important;
+    }
+    footer .footer-wrapper div .footer-link[href="mailto:zamzamwater@gmail.com"] {
+        font-size: medium;
+    }
 }
