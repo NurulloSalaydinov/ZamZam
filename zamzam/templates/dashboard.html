@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZamZam Dashboard</title>
+
+    <style>
+        body {
+            background: #FFF8F8;
+        }
+        * {
+            font-family: sans-serif;
+        }
+        a {
+            text-decoration: line-through;
+        }
+        h1, h2, h3, h4, h5, h6, p, span, a {
+            color: #262163;
+        }
+        .simple-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .simple-navbar a {
+            color: #262163;
+            padding: 8px 35px;
+            text-decoration: none;
+            border: 1px solid #262163;
+            background: rgba(142, 128, 128, 0.08);
+        }
+        button {
+            font-size: 17px;
+            cursor: pointer;
+            color: #262163;
+            padding: 8px 35px;
+            margin: 0 0 15px 0;
+            text-decoration: none;
+            border: 1px solid #262163;
+            background: rgba(142, 128, 128, 0.08); 
+        }
+      .container {
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .table {
+        width: auto;
+        overflow-x: scroll;
+        padding: 20px 20px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      thead {
+        border-bottom: 2px solid #000 !important
+      }
+      tr {
+        border-bottom: 1px solid #ccc !important
+      }
+      td {
+        padding: 5px;
+      }
+      @media (max-width: 1100px) {
+        table {
+            width: 1100px !important
+        }
+      }
+      @media (min-width: 768px) {
+        .container {
+          width: 750px;
+        }
+      }
+      @media (min-width: 992px) {
+        .container {
+          width: 970px;
+        }
+      }
+      @media (min-width: 1200px) {
+        .container {
+          width: 1170px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="simple-navbar">
+            <h1>ZamZam<br>Water</h1>
+            <a href="/">Bosh Sahifa</a>
+        </div>
+
+        <h3>Saytdan kelayotgan buyurtmalar</h3>
+        <button onclick="printDiv()">Pdf Saqlash</button>
+        <div class="table">
+            <table id="table">
+                <thead>
+                    <td><b>No</b></td>
+                    <td><b>Buyurtma</b></td>
+                    <td><b>Soni</b></td>
+                    <td><b>Narxi</b></td>
+                    <td><b>Manzil</b></td>
+                    <td><b>Malumot</b></td>
+                    <td><b>Xarakat</b></td>
+                </thead>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.ordersize }}</td>
+                    <td>{{ order.count }}</td>
+                    <td>{{ order.cost }} uzs</td>
+                    <td>{{ order.address }}</td>
+                    <td>
+                        {% if order.is_finished %}
+                            <a href="{% url 'update' order.id %}">
+                                Yetkazib berilgan
+                            </a>    
+                        {% else %}
+                            <a href="{% url 'update' order.id %}">
+                                Jarayonda
+                            </a>    
+                        {% endif %}
+                    </td>
+                    <td>
+                        <a href="{% url 'delete' order.id %}">O'chirmoq</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <br>
+        <br>
+        <h3>Saytdan kelayotgan xabarlar</h3>
+        <div class="table">
+            <table>
+                <thead>
+                    <td><b>No</b></td>
+                    <td><b>Ism Familya</b></td>
+                    <td><b>Tashkilot</b></td>
+                    <td><b>Telefon</b></td>
+                    <td><b>Xabar</b></td>
+                </thead>
+                {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.id }}</td>
+                    <td>{{ contact.name }}</td>
+                    <td>{{ contact.company }}</td>
+                    <td><a href="tel:+{{ contact.phone }}">{{ contact.phone }}</a></td>
+                    <td>{{ contact.msg }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <script>
+      function printDiv() {
+        var divContents = document.getElementById("table").outerHTML;
+        var a = window.open('', '', 'height=500, width=1200');
+        a.document.write('<html>');
+        a.document.write('<style>*{font-family:sans-serif}table{width:100%;border-collapse: collapse}thead{border-bottom: 2px solid #000}tr{border-bottom: 1px solid #ccc}td{padding:10px;}</style>');
+        a.document.write('</html>');
+        a.document.write('<body>');
+        a.document.write(divContents);
+        a.document.write('</body></html>');
+        a.document.close();
+        a.print();
+      }
+    </script>
+
+  </body>
+</html>

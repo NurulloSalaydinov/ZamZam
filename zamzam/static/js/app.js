@@ -1,23 +1,28 @@
-const navbarAnimation = () => {
-  var prevScrollpos = window.pageYOffset;
-  window.onscroll = function () {
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-      document.querySelector("nav").classList.add("fixed-visible");
-    } else {
-      document.querySelector("nav").classList.remove("fixed-visible");
-    }
-    prevScrollpos = currentScrollPos;
-    if (currentScrollPos > 300) {
-      document.querySelector("nav").classList.add("fixed-unvisible");
-    } else {
-      document.querySelector("nav").classList.remove("fixed-unvisible");
-      document.querySelector("nav").classList.remove("fixed-visible");
-    }
-  };
-};
+// const navbarAnimation = () => {
+//   var prevScrollpos = window.pageYOffset;
+//   window.onscroll = function () {
+//     var currentScrollPos = window.pageYOffset;
+//     if (prevScrollpos > currentScrollPos) {
+//       document.querySelector("nav").classList.add("fixed-visible");
+//     } else {
+//       document.querySelector("nav").classList.remove("fixed-visible");
+//     }
+//     prevScrollpos = currentScrollPos;
+//     if (currentScrollPos > 300) {
+//       document.querySelector("nav").classList.add("fixed-unvisible");
+//     } else {
+//       document.querySelector("nav").classList.remove("fixed-unvisible");
+//       document.querySelector("nav").classList.remove("fixed-visible");
+//     }
+//   };
+// };
 
-navbarAnimation();
+// navbarAnimation();
+document.querySelectorAll('input').forEach(e => {
+  e.onchange = () => {
+    e.value.replace(/[^a-zA-Z0-9]/g, '');
+  }
+});
 
 const navbarBurger = (e) => {
   var menu = document.querySelector(".navbar-menu");
@@ -237,18 +242,40 @@ const closeModal = () => {
 
 Slider("catalogSlider");
 
-const sendFormData = (formEl) => {
+const SweetAlert = (message, info='info') => {
+  let alert = document.createElement('div');
+  alert.classList.add('alert');
+  alert.classList.add(info);
+  alert.innerHTML = `
+  <div class="close-sweet">x</div> 
+  <h5>${message}</h5>
+  `
+  document.body.appendChild(alert);
+  setTimeout(() => {
+    document.querySelectorAll('.alert').forEach(alert => {
+      alert.classList.add('alert-show');
+    });
+  }, 100)
+  setTimeout(() => {
+    document.body.removeChild(alert);
+  }, 4000)
+  document.querySelector('.close-sweet').onclick = () => {
+    document.body.removeChild(alert);
+  }
+}
+
+const sendToContact = (formContact) => {
   var kvpairs = {};
-  var form = formEl;
+  var form = formContact;
   for (var i = 0; i < form.elements.length; i++) {
     var e = form.elements[i];
     if (encodeURIComponent(e.name) != '' && encodeURIComponent(e.value) != '') {
-      kvpairs[encodeURIComponent(e.name)] = encodeURIComponent(e.value)
+      kvpairs[encodeURIComponent(e.name)] = encodeURIComponent(e.value.replace(/[^a-zA-Z0-9]/g, '_'))
     }
   }
   var jsonData = JSON.stringify(kvpairs);
   console.log(jsonData);
-  fetch("", {
+  fetch("/new-contact/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -257,9 +284,56 @@ const sendFormData = (formEl) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log("Success:", data);
+      if (data['success'] == 200) {
+        SweetAlert('Qabul qilindi !', 'info');
+        document.querySelectorAll('input').forEach(input => {
+          input.value = ''
+        });
+        document.querySelectorAll('textarea').forEach(textarea => {
+          textarea.value = ''
+        });
+      } else {
+        SweetAlert('Xatolik ketdi boshqattan urinib korin !', 'warning');
+      }
     })
     .catch((error) => {
-      console.error("Error:", error);
+      SweetAlert('Xatolik ketdi boshqattan urinib korin !', 'warning');
+    });
+}
+
+const sendFormData = (formEl) => {
+  var kvpairs = {};
+  var form = formEl;
+  for (var i = 0; i < form.elements.length; i++) {
+    var e = form.elements[i];
+    if (encodeURIComponent(e.name) != '' && encodeURIComponent(e.value) != '') {
+      kvpairs[encodeURIComponent(e.name)] = encodeURIComponent(e.value.replace(/[^a-zA-Z0-9]/g, '_'))
+    }
+  }
+  var jsonData = JSON.stringify(kvpairs);
+  fetch("/new-order/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.querySelector('.modal').classList.remove('active');
+      if (data['success'] == 200) {
+        SweetAlert('Qabul qilindi !', 'info');
+        document.querySelectorAll('input').forEach(input => {
+          input.value = ''
+        });
+        document.querySelectorAll('textarea').forEach(textarea => {
+          textarea.value = ''
+        });
+      } else {
+        SweetAlert('Xatolik ketdi boshqattan urinib korin !', 'warning');
+      }
+    })
+    .catch((error) => {
+      SweetAlert('Xatolik ketdi boshqattan urinib korin !', 'warning');
     });
 };

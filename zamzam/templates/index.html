@@ -5,9 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zam Zam Water</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
+
+    {% if request.user.is_staff %}
+        <a href="{% url 'dashboard' %}" class="toAdmin">
+            <img src="/static/img/icon/arrow-right-circle.svg" alt="">
+        </a>
+    {% endif %}
 
     <header>
         <nav class="navbar">
@@ -54,19 +60,19 @@
             <!-- answer wrapper -->
             <div class="answer-wrapper">
                 <div class="first-side">
-                    <img src="img/icon/first.png" alt="Topilmadi">
+                    <img src="/static/img/icon/first.png" alt="Topilmadi">
                     <p><b>Suvdagi kislorod miqdori yuqori</b> o’zingizni yaxshi his qilishni boshlaysiz va ish faoliyatini yaxshilaydi.</p>
                 </div>
                 <div class="second-side">
-                    <img src="img/icon/third.png" alt="Topilmadi">
+                    <img src="/static/img/icon/third.png" alt="Topilmadi">
                     <p><b>Shahar bo’ylab yetkazib berish bepul</b>: Shaharni istalgan qismiga bepul yetkazib berish. </p>
                 </div>
                 <div class="third-side">
-                    <img src="img/icon/second.png" alt="Topilmadi">
+                    <img src="/static/img/icon/second.png" alt="Topilmadi">
                     <p><b>Ajoyib tetiklantiruvchi ta’m</b>: tabiiyligi tufayli tetiklantiruvchi hususiyatga ega.</p>
                 </div>
                 <div class="fourth-side">
-                    <img src="img/icon/fourth.png" alt="Topilmadi">
+                    <img src="/static/img/icon/fourth.png" alt="Topilmadi">
                     <p><b>Ideal yumshoqliqga ega</b>: Suvdagi tuzlar, kaltsiy va magniylarni kamligi hisobiga.</p>
                 </div>
             </div>
@@ -80,21 +86,21 @@
                     <a href="#catalog" class="base-btn is-small">Buyurtma</a>
                 </div>
                 <div class="image-content">
-                    <img src="img/order-image.png" alt="">
+                    <img src="/static/img/order-image.png" alt="">
                 </div>
             </div>
         </div>
         <div class="right-watermark">
-            <img src="img/watermark-right.png" alt="">
+            <img src="/static/img/watermark-right.png" alt="">
         </div>
         <div class="left-watermark">
-            <img src="img/watermark-left.png" alt="">
+            <img src="/static/img/watermark-left.png" alt="">
         </div>
         <div class="container">
             <div class="calculation-wrapper">
                 <div class="bottle-side">
                     <div class="img-relative">
-                        <img src="img/bottle-calc.png" alt="Bottle" id="bottle">
+                        <img src="/static/img/bottle-calc.png" alt="Bottle" id="bottle">
                         <div class="img-background animated" id="bottleBg"></div>
                     </div>
                     <div class="calcuation-result" id="overallResult">3.1 L</div>
@@ -118,21 +124,21 @@
             </div>
         </div>
         <div class="right-watermark top-2">
-            <img src="img/watermark-right.png" alt="">
+            <img src="/static/img/watermark-right.png" alt="">
         </div>
         <div class="left-watermark top-2">
-            <img src="img/watermark-left.png" alt="">
+            <img src="/static/img/watermark-left.png" alt="">
         </div>
         <div class="container">
             <h1 class="text-center" id="catalog">Katalog</h1>
-            <h1 class="centered-mobile-visible-text">«ZamZam Water» qadoqlangan<br> ichimlik suvi</h1>
+            <h1 class="centered-mobile-visible-text margin-bottomed">«ZamZam Water» qadoqlangan<br> ichimlik suvi</h1>
             <div class="catalog-wrapper">
                 <div class="catalog-slider" id="catalogSlider">
                     <!-- simple-wrapper for simple slider -->
                     <div class="slider-wrapper simple-wrapper">
-                        <img src="img/big-bottles.png" alt="">
-                        <img src="img/big-bottles.png" alt="">
-                        <img src="img/big-bottles.png" alt="">
+                        <img src="/static/img/big-bottles.png" alt="">
+                        <img src="/static/img/big-bottles.png" alt="">
+                        <img src="/static/img/big-bottles.png" alt="">
                     </div>
                     <div class="inline-slider-conf">
                         <div class="slider-controller">
@@ -146,9 +152,9 @@
                             </div>
                         </div>
                         <div class="preview">
-                            <img src="img/big-bottles.png" class="active" alt="">
-                            <img src="img/slider-part.png" alt="">
-                            <img src="img/big-bottles.png" alt="">
+                            <img src="/static/img/big-bottles.png" class="active" alt="">
+                            <img src="/static/img/slider-part.png" alt="">
+                            <img src="/static/img/big-bottles.png" alt="">
                         </div>
                     </div>
                 </div>
@@ -157,19 +163,19 @@
                     <p>Kundalik ichish va ovqatga qo’shish uchun mo’ljallangan. Yomg'ir suvining yoqimli tabiiy ta'mi, tozaligi va yumshoqligi bilan ajralib turadi.</p>
                     <div class="forted-wrapper">
                         <div class="inlined-content">
-                            <img src="img/icon/simple-1.png" alt="">
+                            <img src="/static/img/icon/simple-1.png" alt="">
                             <p>Shaffof va<br>tiniq</p>
                         </div>
                         <div class="inlined-content">
-                            <img src="img/icon/simple-2.png" alt="">
+                            <img src="/static/img/icon/simple-2.png" alt="">
                             <p>Ideal<br>yumshoq</p>
                         </div>
                         <div class="inlined-content">
-                            <img src="img/icon/simple-3.png" alt="">
+                            <img src="/static/img/icon/simple-3.png" alt="">
                             <p>Kislorod bilan<br>boyitilgan</p>
                         </div>
                         <div class="inlined-content">
-                            <img src="img/icon/simple-4.png" alt="">
+                            <img src="/static/img/icon/simple-4.png" alt="">
                             <p>Ajoyib<br>ta’m</p>
                         </div>
                     </div>
@@ -177,28 +183,28 @@
                         <label for="l1">
                             <input type="radio" name="litr" litr-size="L5" id="l1" cost="9800" checked>
                             <div class="inlined" litr-size="L5">
-                                <img src="img/icon/simple-input.png" alt="">
+                                <img src="/static/img/icon/simple-input.png" alt="">
                                 <p>9.800</p>
                             </div>
                         </label>
                         <label for="l2">
                             <input type="radio" name="litr" litr-size="L10" id="l2" cost="10000">
                             <div class="inlined" litr-size="L10">
-                                <img src="img/icon/simple-input.png" alt="">
+                                <img src="/static/img/icon/simple-input.png" alt="">
                                 <p>10.000</p>
                             </div>
                         </label>
                         <label for="l3">
                             <input type="radio" name="litr" id="l3" litr-size="L10 &RightArrow; 12" cost="11800">
                             <div class="inlined" litr-size="L10 &RightArrow; 12">
-                                <img src="img/icon/simple-input.png" alt="">
+                                <img src="/static/img/icon/simple-input.png" alt="">
                                 <p>11.800</p>
                             </div>
                         </label>
                         <label for="l4">
                             <input type="radio" name="litr" litr-size="L15" id="l4" cost="15800">
                             <div class="inlined" litr-size="L15 &RightArrow; 16">
-                                <img src="img/icon/simple-input.png" alt="">
+                                <img src="/static/img/icon/simple-input.png" alt="">
                                 <p>15.800</p>
                             </div>
                         </label>
@@ -216,7 +222,7 @@
                             <button class="order-modal-open">Buyurtma</button>
                         </div>
                         <div class="suffix">
-                            <img src="img/icon/clock.png" alt="">
+                            <img src="/static/img/icon/clock.png" alt="">
                             <span>Sotib<br>Olish</span>
                         </div>
                     </div>
@@ -225,7 +231,7 @@
             </div>
         </div>
         <div class="container" id="aboutus">
-            <h1 class="centered-mobile-visible-text couple-title">ZamZam Water MCHJ haqida</h1>
+            <h1 class="centered-mobile-visible-text couple-title minus-top">ZamZam Water MCHJ haqida</h1>
             <div class="couple-wrapper">
                 <div class="text-content">
                     <h1 class="couple-title">ZamZam Water MCHJ haqida</h1>
@@ -236,35 +242,31 @@
                     <a href="#contact" class="base-btn">Bog'lanish</a>
                 </div>
                 <div class="img-content">
-                    <img src="img/big-bottles.png" alt="">
+                    <img src="/static/img/big-bottles.png" alt="">
                 </div>
             </div>
             <br>
             <br>
-            <br>
-            <br>
-            <br>
-            <br>
             <div id="contact" class="contact couple-wrapper align-center">
                 <div class="form-image">
-                    <img src="img/map-background.png" alt="">
+                    <img src="/static/img/map-background.png" alt="">
                 </div>
                 <div class="form-content">
-                    <form class="form-group">
+                    <form class="form-group" onsubmit="event.preventDefault(); sendToContact(this);">
                         <h1 class="text-center">Savol va takliflar</h1>
                         <br>
                         <br>
                         <div class="form-input">
-                            <input type="text" placeholder="Ism Familiya" required>
+                            <input name="name" type="text" placeholder="Ism Familiya" required>
                         </div>
                         <div class="form-input">
-                            <input type="text" placeholder="Tashkilot" required>
+                            <input name="company" type="text" placeholder="Tashkilot" required>
                         </div>
                         <div class="form-input">
-                            <input type="phone" pattern="[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}" placeholder="Telefon" required>
+                            <input name="phone" type="phone" pattern="[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}" placeholder="Telefon" required>
                         </div>
                         <div class="form-textarea">
-                            <textarea placeholder="Xabar matni"></textarea>
+                            <textarea name="message" placeholder="Xabar matni"></textarea>
                         </div>
                         <div class="form-button">
                             <button class="base-btn">Yuborish</button>
@@ -313,7 +315,7 @@
                     Buyurtma berish formasi : (<span class="modal-count">10 L x 10 qadoq</span> = <span class="modal-cost">105.000</span> uzs)
                 </h2>
                 <div class="modal-close" onclick="closeModal()">
-                    <img src="img/icon/modal-close.svg" alt="close">
+                    <img src="/static/img/icon/modal-close.svg" alt="close">
                 </div>
             </div>
             <form class="modal-form" onsubmit="event.preventDefault(); sendFormData(this)">
@@ -335,9 +337,9 @@
                         <span>Manzil</span>
                         <input name="address" type="text" maxlength="200" class="modal-input" placeholder="Buyuk Turon 21" id="address">
                     </label>
-                    <label for="address2">
-                        <span>Manzil 2</span>
-                        <input name="address2" type="text" maxlength="200" class="modal-input" id="address">
+                    <label for="phone">
+                        <span>Telefon raqam</span>
+                        <input name="phone" pattern="[0-9]{2}[0-9]{3}[0-9]{2}[0-9]{2}" type="number" maxlength="200" class="modal-input" id="phone">
                     </label>
                 </div>
                 <div class="triple-input">
@@ -359,7 +361,7 @@
                     </label>
                     <label for="zipcode">
                         <span>Pochta indeksi</span>
-                        <input name="zipcode" type="text" class="modal-input" required id="zipcode" pattern="[0-9]{*}">
+                        <input name="zipcode" type="text" class="modal-input" required id="zipcode" maxlength="20">
                     </label>
                 </div>
                 <div class="form-btn">
@@ -371,6 +373,6 @@
     </div>
     
 
-    <script src="js/app.js"></script>
+    <script src="/static/js/app.js"></script>
 </body>
 </html>

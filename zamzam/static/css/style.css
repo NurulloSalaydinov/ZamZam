@@ -12,6 +12,74 @@ html {
     --base-white: #FFFFFF;
 }
 
+/* sweet alert styles */
+.alert {
+    top: 20%;
+    right: 0;
+    width: auto;
+    color: #000;
+    font-size: 25px;
+    position: fixed;
+    font-weight: 600;
+    background: #eee;
+    padding: 16px 35px;
+    border-radius: 10px;
+    z-index: 11111111111111;
+    transform: translateX(100%);
+    transition: all 0.4s !important;
+}
+
+.toAdmin {
+    right: 0;
+    bottom: 5px;
+    position: fixed;
+    background: #fff;
+    border-radius: 15px;
+    z-index: 111111111111111;
+    padding: 20px 20px 15px 20px;
+    box-shadow: -5px 0 20px -5px rgba(0, 0, 0, 0.4);
+}
+
+.toAdmin img {
+    width: 40px;
+}
+
+.alert.alert-show {
+    transform: translateX(0);
+    transition: all 0.4s !important;
+}
+
+.alert.info {
+    background: #d4edda;
+}
+
+.alert.info h5 {
+    color: #155724 !important;
+}
+
+.alert.warning {
+    background: #fff3cd;
+}
+
+.alert.warning h5 {
+    color: #856404 !important;
+}
+
+.alert .close-sweet {
+    top: 0px;
+    right: 10px;
+    cursor: pointer;
+    position: absolute;
+}
+
+.alert.info .close-sweet {
+    color: #155724 !important;
+}
+
+.alert.warning .close-sweet {
+    color: #856404 !important;
+}
+
 ::-webkit-scrollbar {
     width: 0.75rem;
     border: 3px solid var(--base-dark-blue);
@@ -45,7 +113,7 @@ nav {
     z-index: 111;
     display: flex;
     transition: all 0.4s;
-    position: absolute;
+    position: fixed;
     background: #fff;
     padding: 10px 30px;
     align-items: center;
@@ -149,7 +217,7 @@ header {
 main {
     width: 100%;
     height: auto;
-    padding: 30px 0;
+    padding: 30px 0 0 0;
 }
 
 .answer-wrapper {
@@ -209,7 +277,7 @@ main {
     gap: 150px;
     display: flex;
     margin: 60px 0 40px 0;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     justify-content: center;
 }
 
@@ -246,6 +314,10 @@ main {
     animation-timing-function: linear;
     animation-direction: alternate;
     animation-iteration-count: infinite;
+}
+
+.minus-top {
+    margin-top: -30px !important;
 }
 
 @keyframes heightBg {
@@ -378,9 +450,13 @@ main {
 .catalog-wrapper {
     gap: 70px;
     display: flex;
-    margin: 70px 0;
+    margin: 30px 0;
     align-items: center;
     justify-content: center;
+}
+
+.margin-bottomed {
+    margin-bottom: 60px;
 }
 
 .catalog-wrapper .catalog-slider:nth-child(1) {
@@ -613,7 +689,7 @@ main {
 
 .count-calc .display .minus {
     top: 7px;
-    z-index: 1111;
+    z-index: 11;
     font-size: 30px;
     cursor: pointer;
     position: absolute;
@@ -625,7 +701,7 @@ main {
 
 .count-calc .display .plus {
     width: 20px !important;
-    z-index: 1111;
+    z-index: 11;
     top: 5px;
     right: 10px;
     cursor: pointer;
@@ -1014,20 +1090,29 @@ footer .footer-wrapper div .footer-subtitle {
         margin-bottom: 40px;
     }
     .calculation-wrapper {
-        flex-direction: column-reverse;
+        flex-direction: column;
+    }
+    .calculation-wrapper .bottle-side .img-relative {
+        width: 30% !important;
+        margin: auto;
+        overflow: hidden;
     }
     .calculation-wrapper .bottle-side img {
         width: 100%;
-        margin-top: -95px;
+        margin-top: 10px;
+        object-fit: contain !important;
     }
     .calculation-wrapper .bottle-side .calcuation-result {
         font-size: 30px;
         margin: 20px auto;
-        width: 100% !important;
+        width: 60% !important;
         height: 70px !important;
     }
     .calculation-wrapper div {
         width: 100% !important;
+    }
+    .calculation-wrapper .range-side {
+        margin-top: -120px;
     }
     .calculation-wrapper .range-side h1 {
         font-size: 30px;
@@ -1076,6 +1161,9 @@ footer .footer-wrapper div .footer-subtitle {
     .couple-wrapper .text-content h1 {
         display: none;
     }
+    .catalog-wrapper .text-content {
+        margin-top: -60px;
+    }
     footer .footer-wrapper {
         flex-direction: column;
     }
@@ -1103,9 +1191,17 @@ footer .footer-wrapper div .footer-subtitle {
     .triple-input label {
         width: 100% !important;
     }
+    .couple-title {
+        font-weight: 600;
+        margin-bottom: 30px;
+        font-size: 30px !important;
+    }
 }
 
 @media (max-width: 480px) {
+    nav .navbar-menu .base-btn {
+        width: 100%;
+    }
     .is-size-medium-mobile {
         font-size: 20px;
     }
@@ -1118,6 +1214,34 @@ footer .footer-wrapper div .footer-subtitle {
     .header-banner .banner-title {
         margin-top: -3px;
         font-size: 30px;
+    }
+    .calculation-wrapper .bottle-side .img-relative {
+        width: 70% !important;
+        margin: auto;
+        overflow: hidden;
+    }
+    .calculation-wrapper .bottle-side img {
+        width: 100%;
+        margin-top: 10px;
+        object-fit: contain !important;
+    }
+    .order-title {
+        font-size: 25px;
+    }
+    .calculation-title {
+        font-size: 25px !important
+    }
+    .centered-mobile-visible-text {
+        font-size: 25px !important
+    }
+    h1 {
+        font-size: 25px
+    }
+    .couple-wrapper .text-content p {
+        font-size: 18px
+    }
+    .base-btn {
+        width: 100%;
     }
 }
 
