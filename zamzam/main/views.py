@@ -7,8 +7,8 @@ from .models import Order, Contact
 from django.contrib.auth.views import LoginView
 from django.contrib.admin.views.decorators import staff_member_required
 
-bot = telebot.TeleBot("5481019427:AAEkEELE7_GwKpS6s7s_6NKEKL1Np46XZLU")
-sendTo = '1060158414'
+bot = telebot.TeleBot("Your token")
+sendTo = 'your id'
 
 class Login(LoginView):
     template_name = 'login.html'
